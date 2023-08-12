@@ -9,9 +9,7 @@ Installation:
 
 **NOTE:**
 
-In the meantime, you can still add this as a custom repository in HACS.
-
-Open HACS. Click on one of the sub-headings (integration, frontend, etc) then click the three dots in the top right of the HACS page and copy the URL for the main repo in there at the bottom. Select plugin as the type. It should show up in HACS to be able to be installed at that point.
+Add this as a custom repository in HACS: Open HACS. Click on one of the sub-headings (integration, frontend, etc) then click the three dots in the top right of the HACS page and copy the URL for the main repo in there at the bottom. Select plugin as the type. It should show up in HACS to be able to be installed at that point.
 
 ***
 
