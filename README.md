@@ -134,11 +134,11 @@ If the speed percantage is changed via any other means (slider, service call, et
             
   ```
 
-This is with the default Lovelace frontend theme set:
+This is with the default Lovelace frontend theme set and buttons reversed:
 
 ![Default](images/fan_percent_default.jpg)
 
-This is with the customTheme set to true:
+This is with the customTheme set to true and buttons reversed:
 
 ![Default](images/fan_percent_default2.jpg)
 
