@@ -1,4 +1,4 @@
-Provides a means to program 3 preset speed percentage settings for fans selectable from a Lovelace button row. 
+Provides a means to program 6 preset speed percentage settings for fans selectable from a Lovelace button row. 
 
 ## NOTE: You must be on Home Assistant V2021.3.X or higher to use this plug-in
 
@@ -12,12 +12,12 @@ Provides a means to program 3 preset speed percentage settings for fans selectab
         entities:
         ## USE THIS CONFIG TO HAVE IT MATCH YOUR THEME ##
           - entity: fan.hall_fan
-            type: custom:fan-percent-button-row
+            type: custom:fan-percent-button-7row
             name: Fan Not Custom Theme
             customTheme: false
         ## USE THIS CONFIG TO USE A DEFAULT CUSTOM THEME
           - entity: fan.hall_fan
-            type: custom:fan-percent-button-row
+            type: custom:fan-percent-button-7row
             name: Fan Default Custom Theme
             customTheme: true
             customSetpoints: true
@@ -26,7 +26,7 @@ Provides a means to program 3 preset speed percentage settings for fans selectab
             hiPercent: 90
         ## USE THIS CONFIG TO USE A 'CUSTOMZED' CUSTOM THEME
           - entity: fan.hall_fan
-            type: custom:fan-percent-button-row
+            type: custom:fan-percent-button-7row
             name: Fan Custom Custom Theme
             reverseButtons: true
             customTheme: true
@@ -37,7 +37,7 @@ Provides a means to program 3 preset speed percentage settings for fans selectab
             isOffColor: 'purple'
         ## USE THIS CONFIG TO SET CUSTOM BUTTON TEXT (NOT REQUIRED TO SET "customTheme: true" TO USE THESE )
           - entity: fan.hall_fan
-            type: custom:fan-percent-button-row
+            type: custom:fan-percent-button-7row
             name: Fan Custom Button Text
             customHiText: me
             customLowText: do
