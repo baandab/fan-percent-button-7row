@@ -140,6 +140,6 @@ This is with the default Lovelace frontend theme set:
 
 This is with the customTheme set to true:
 
-![Default](images/fan_percent_default_2.jpg)
+![Default](images/fan_percent_default2.jpg)
 
 
