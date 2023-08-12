@@ -1,7 +1,7 @@
 window.customCards = window.customCards || [];
 window.customCards.push({
-  type: "fan-percent-button-7row",
-  name: "fan percent button 7row",
+  type: "fan-percent-button-7row-x",
+  name: "fan percent button 7row x",
   description: "A plugin to display your fan controls in a button row.",
   preview: false,
 });
@@ -18,11 +18,16 @@ class CustomFanPercent7Row extends LitElement {
 			customTheme: false,
 			customSetpoints: false,
 			reverseButtons: false,
-			isTwoSpeedFan: false,
-			hideOff: false,
+			hideOffButton: false,
+			hideButton1: false,
+			hideButton2: false,
+			hideButton3: false,
+			hideButton4: false,
+			hideButton5: false,
+			hideButton6: false,
 			sendStateWithSpeed: false,
 			allowDisablingButtons: true,
-			offPercentage: 0,
+			buttonOffPercentage: 0,
 			button1Percentage: 16,
 			button2Percentage: 33,
 			button3Percentage: 50,
@@ -54,7 +59,7 @@ class CustomFanPercent7Row extends LitElement {
 			hass: Object,
 			_config: Object,
 			_stateObj: Object,
-			_offSP: Number,
+			_buttonOffSP: Number,
 			_button1SP: Number,
 			_button2SP: Number,
 			_button3SP: Number,
@@ -198,8 +203,13 @@ class CustomFanPercent7Row extends LitElement {
 		const custTheme = config.customTheme;
 		const custSetpoint = config.customSetpoints;
 		const revButtons = config.reverseButtons;
-		const twoSpdFan = config.isTwoSpeedFan;
-		const hide_Off = config.hideOff;
+		const hide_OffButton = config.hideOffButton;
+		const hide_Button1 = config.hideButton1;
+		const hide_Button2 = config.hideButton2;
+		const hide_Button3 = config.hideButton2;
+		const hide_Button4 = config.hideButton3;
+		const hide_Button5 = config.hideButton5;
+		const hide_Button6 = config.hideButton6;
 		const sendStateWithSpeed = config.sendStateWithSpeed;
 		const allowDisable = config.allowDisablingButtons;
 		const buttonWidth = config.width;
@@ -220,7 +230,7 @@ class CustomFanPercent7Row extends LitElement {
 		const cus5Text = config.speed5Text;
 		const cus6Text = config.speed6Text;
 
-//		const OffSetpoint = config.offPercentage;
+//		const ButtonOffSetpoint = config.buttonOffPercentage;
 //		const Button1Setpoint = config.button1Percentage;
 //		const Button2Setpoint = config.button2Percentage;
 //		const Button3Setpoint = config.button3Percentage;
@@ -228,7 +238,7 @@ class CustomFanPercent7Row extends LitElement {
 //		const Button5Setpoint = config.button5Percentage;
 //		const Button6Setpoint = config.button6Percentage;
 
-		let offSetpoint;
+		let ButtonOffSetpoint;
 		let Button1Setpoint;
 		let Button2Setpoint;
 		let Button3Setpoint;
@@ -242,9 +252,16 @@ class CustomFanPercent7Row extends LitElement {
 		let button5;
 		let button6;
 		let offstate;
+		let button1Display;
+		let button2Display;
+		let button3Display;
+		let button4Display;
+		let button5Display;
+		let button6Display;
+		let buttonOffDisplay;
 
 		if (custSetpoint) {
-			offSetpoint = parseInt(config.offPercentage);
+			ButtonOffSetpoint = parseInt(config.buttonOffPercentage);
 			if (parseInt(config.button1Percentage) < 1) {
 				Button1Setpoint = 1;
 			} else {
@@ -260,7 +277,7 @@ class CustomFanPercent7Row extends LitElement {
 				Button6Setpoint = parseInt(config.button6Percentage);
 			}
 		} else {
-			offSetpoint = 0;       //parseInt(OffSetpoint);
+			ButtonOffSetpoint = 0; //parseInt(ButtonOffSetpoint);
 			Button1Setpoint = 16;  //parseInt(Button1Setpoint);
 			Button2Setpoint = 33;  //parseInt(Button2Setpoint);
 			Button3Setpoint = 50;  //parseInt(Button3Setpoint);
@@ -269,7 +286,7 @@ class CustomFanPercent7Row extends LitElement {
 			Button6Setpoint = 100; //parseInt(Button6Setpoint);
 		}
 		if (stateObj && stateObj.attributes) {
-			if (stateObj.state == 'on' && stateObj.attributes.percentage > offSetpoint && stateObj.attributes.percentage <= Button1Setpoint) {
+			if (stateObj.state == 'on' && stateObj.attributes.percentage > ButtonOffSetpoint && stateObj.attributes.percentage <= Button1Setpoint) {
 				button1 = 'on';
 			} else if (stateObj.state == 'on' && stateObj.attributes.percentage > Button1Setpoint && stateObj.attributes.percentage <= Button2Setpoint) {
 				button2 = 'on';
@@ -388,26 +405,46 @@ class CustomFanPercent7Row extends LitElement {
 		let button5name = '5';
 		let button6name = '6';
 
-		let hideoff = 'display:block';
-		let hidebutton = 'display:block';
-		let nohide = 'display:block';
-
-		if (twoSpdFan) {
-			hidebutton = 'display:none';
+		if (hide_Button1) {
+			button1Display = 'display:none';
 		} else {
-			hidebutton = 'display:block';
+			button1Display = 'display:block';
 		}
-
-		if (hide_Off) {
-			hideoff = 'display:none';
+		if (hide_Button2) {
+			button2Display = 'display:none';
 		} else {
-			hideoff = 'display:block';
+			button2Display = 'display:block';
+		}		
+		if (hide_Button3) {
+			button3Display = 'display:none';
+		} else {
+			button3Display = 'display:block';
+		}		
+		if (hide_Button4) {
+			button4Display = 'display:none';
+		} else {
+			button4Display = 'display:block';
+		}		
+		if (hide_Button5) {
+			button5Display = 'display:none';
+		} else {
+			button5Display = 'display:block';
+		}		
+		if (hide_Button6) {
+			button6Display = 'display:none';
+		} else {
+			button6Display = 'display:block';
+		}
+		if (hide_OffButton) {
+			buttonOffDisplay = 'display:none';
+		} else {
+			buttonOffDisplay = 'display:block';
 		}
 
 		this._stateObj = stateObj;
 		this._width = buttonwidth;
 		this._height = buttonheight;
-		this._offSP = offSetpoint;
+		this._buttonOffSP = ButtonOffSetpoint;
 		this._button1SP = Button1Setpoint;
 		this._button2SP = Button2Setpoint;
 		this._button3SP = Button3Setpoint;
@@ -418,7 +455,7 @@ class CustomFanPercent7Row extends LitElement {
 		if (revButtons) {
 			this._button1State = (offstate == 'on' && allowDisable);
 			this._button2State = (button1 === 'on' && allowDisable);
-			this._button3State = (button2 === 'on'&& allowDisable);
+			this._button3State = (button2 === 'on' && allowDisable);
 			this._button4State = (button3 === 'on' && allowDisable);
 			this._button5State = (button4 === 'on' && allowDisable);
 			this._button6State = (button5 === 'on' && allowDisable);
@@ -444,20 +481,20 @@ class CustomFanPercent7Row extends LitElement {
 			this._button5Name = button4name;
 			this._button6Name = button5name;
 			this._button7Name = button6name;
-			this._button1 = hideoff;
-			this._button2 = nohide;
-			this._button3 = hidebutton;
-			this._button4 = hidebutton;
-			this._button5 = hidebutton;
-			this._button6 = hidebutton;
-			this._button7 = nohide;
+			this._button1 = buttonOffDisplay;
+			this._button2 = button1Display;
+			this._button3 = button2Display;
+			this._button4 = button3Display;
+			this._button5 = button4Display;
+			this._button6 = button5Display;
+			this._button7 = button6Display;
 		} else {
-			this._button1State = (button6 === 'on' && allowDisable);
-			this._button2State = (button5 === 'on'&& allowDisable);
-			this._button3State = (button4 === 'on' && allowDisable);
-			this._button4State = (button3 == 'on' && allowDisable);
-			this._button5State = (button2 === 'on' && allowDisable);
-			this._button6State = (button1 === 'on' && allowDisable);
+			this._button1State = (button6  === 'on' && allowDisable);
+			this._button2State = (button5  === 'on' && allowDisable);
+			this._button3State = (button4  === 'on' && allowDisable);
+			this._button4State = (button3  === 'on' && allowDisable);
+			this._button5State = (button2  === 'on' && allowDisable);
+			this._button6State = (button1  === 'on' && allowDisable);
 			this._button6State = (offstate === 'on' && allowDisable);
 			this._button1Color = button6color;
 			this._button2Color = button5color;
@@ -480,13 +517,13 @@ class CustomFanPercent7Row extends LitElement {
 			this._button5Name = button2name;
 			this._button6Name = button1name;
 			this._button7Name = offname;
-			this._button7 = hideoff;
-			this._button6 = hidebutton;
-			this._button5 = hidebutton;
-			this._button4 = hidebutton;
-			this._button3 = nohide;
-			this._button2 = hidebutton;
-			this._button1 = nohide;
+			this._button1 = button6Display;
+			this._button2 = button5Display;
+			this._button3 = button4Display;
+			this._button4 = button3Display;
+			this._button5 = button2Display;
+			this._button6 = button1Display;
+			this._button7 = buttonOffDisplay;
 		}
 	}
 
@@ -542,4 +579,4 @@ class CustomFanPercent7Row extends LitElement {
 	}
 }
 
-customElements.define('fan-percent-button-7row', CustomFanPercent7Row);
+customElements.define('fan-percent-button-7row-x', CustomFanPercent7Row);
