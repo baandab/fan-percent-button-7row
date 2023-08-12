@@ -10,7 +10,7 @@ const LitElement = customElements.get("ha-panel-lovelace") ? Object.getPrototype
 const html = LitElement.prototype.html;
 const css = LitElement.prototype.css;
 
-class CustomFanPercentRow extends LitElement {
+class CustomFanPercent7Row extends LitElement {
 
 	constructor() {
 		super();
