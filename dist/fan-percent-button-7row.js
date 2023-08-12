@@ -1,8 +1,8 @@
 window.customCards = window.customCards || [];
 window.customCards.push({
-  type: "fan-percent-button-row",
-  name: "fan percent button row",
-  description: "A plugin to display your fan controls in a button row.",
+  type: "fan-percent-button-7row",
+  name: "fan percent button 7row",
+  description: "A plugin to display your fan controls with 7 buttons.",
   preview: false,
 });
 
@@ -386,4 +386,4 @@ class CustomFanPercentRow extends LitElement {
 	}
 }
 
-customElements.define('fan-percent-button-row', CustomFanPercentRow);
+customElements.define('fan-percent-button-7row', CustomFanPercent7Row);
