@@ -13,8 +13,13 @@ Provides a means to program 6 preset speed percentage settings for fans selectab
 | customTheme | Boolean | No | false | set to true to use a custom theme |
 | customSetpoints | Boolean | No | false | set to true to use custom speed percent setpoints |
 | reverseButtons | Boolean | No | false | set to true to reverse the button order |
-| isTwoSpeedFan | Boolean | No | false | Set to true to hide the middle percent buttons |
-| hideOff | Boolean | No | false | Set to true to hide the Off button |
+| hideOffButton | Boolean | No | false | Set to true to hide the Off button |
+| hideButton1 | Boolean | No | false | Set to true to hide button 1 |
+| hideButton2 | Boolean | No | false | Set to true to hide button 2 |
+| hideButton3 | Boolean | No | false | Set to true to hide button 3 |
+| hideButton4 | Boolean | No | false | Set to true to hide button 4 |
+| hideButton5 | Boolean | No | false | Set to true to hide button 5 |
+| hideButton6 | Boolean | No | false | Set to true to hide button 6 |
 | sendStateWithSpeed | Boolean | No | false | Used only for certain firmware that requires the State command be sent with the Speed command  |
 | allowDisablingButtons | Boolean | No | true | Set to false to prevent buttons being disabled |
 | width | String | No | 30px | A custom width for the buttons |
