@@ -46,24 +46,33 @@ Then to use this in a card place the following in your entity card:
 | customTheme | Boolean | No | false | set to true to use a custom theme |
 | customSetpoints | Boolean | No | false | set to true to use custom speed percent setpoints |
 | reverseButtons | Boolean | No | false | set to true to reverse the button order |
-| isTwoSpeedFan | Boolean | No | false | Set to true to hide the middle percent button |
+| isTwoSpeedFan | Boolean | No | false | Set to true to hide the middle percent buttons |
 | hideOff | Boolean | No | false | Set to true to hide the Off button |
 | sendStateWithSpeed | Boolean | No | false | Used only for certain firmware that requires the State command be sent with the Speed command  |
 | allowDisablingButtons | Boolean | No | true | Set to false to prevent buttons being disabled |
 | width | String | No | 30px | A custom width for the buttons |
 | height | String | No | 30px | A custom height for the buttons |
 | isOffColor | String | No | '#f44c09' | Sets the color of the 'Off' button if fan is off |
-| isOnLowColor | String | No | '#43A047' | Sets the color of the 'Low' button if fan is on low percent speed |
-| isOnMedColor | String | No | '#43A047' | Sets the color of the 'Med' button if fan is on medium percent speed  |
-| isOnHiColor | String | No | '#43A047' | Sets the color of the 'Hi' button if fan is on high percent speed |
+| speed1Color | String | No | '#43A047' | Sets the color of button 1 if fan is on percent speed #1 |
+| speed2Color | String | No | '#43A047' | Sets the color of button 2 if fan is on percent speed #2 |
+| speed3Color | String | No | '#43A047' | Sets the color of button 3 if fan is on percent speed #3 |
+| speed4Color | String | No | '#43A047' | Sets the color of button 4 if fan is on percent speed #4 |
+| speed5Color | String | No | '#43A047' | Sets the color of button 5 if fan is on percent speed #5 |
+| speed6Color | String | No | '#43A047' | Sets the color of button 6 if fan is on percent speed #6 |
 | buttonInactiveColor | String | No | '#759aaa' | Sets the color of the the buttons if that selection is not "active" |
-| lowPercentage | Integer | No | 33 | Sets the speed percentage level for the "Low" button (min 10) |
-| medPercentage | Integer | No | 66 | Sets the speed percentage level for the "Med" button  |
-| hiPercentage | Integer | No | 99 | Sets the speed level for the "High" button (max 100) |
+| button1Percentage | Integer | No | 16 | Sets the speed percentage level for Button 1 (min 1) |
+| button2Percentage | Integer | No | 33 | Sets the speed percentage level for Buton 2  |
+| button3Percentage | Integer | No | 50 | Sets the speed percentage level for Buton 3  |
+| button4Percentage | Integer | No | 66 | Sets the speed percentage level for Buton 4  |
+| button5Percentage | Integer | No | 83 | Sets the speed percentage level for Buton 5  |
+| button6Percentage | Integer | No | 100 | Sets the speed percentage level for Button 6 (max 100) |
 | customOffText | String | No | 'OFF' | Sets the text of the "off" button |
-| customLowText | String | No | 'LOW' | Sets the text of the "low" speed button |
-| customMedText | String | No | 'MED' | Sets the text of the "medium" speed button |
-| customHiText | String | No | 'HIGH' | Sets the text of the "High" speed button |
+| speed1Text | String | No | '1' | Sets the text of button 1 |
+| speed2Text | String | No | '2' | Sets the text of button 2 |
+| speed3Text | String | No | '3' | Sets the text of button 3 |
+| speed4Text | String | No | '4' | Sets the text of button 4 |
+| speed5Text | String | No | '5' | Sets the text of button 5 |
+| speed6Text | String | No | '6' | Sets the text of button 6 |
 
 
 The values for the colors can be any valid color string in "HEX", "RGB" or by color name.
