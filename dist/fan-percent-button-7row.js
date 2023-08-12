@@ -43,9 +43,9 @@ class CustomFanPercent7Row extends LitElement {
 			speed1Text: '1',
 			speed2Text: '2',
 			speed3Text: '3',
-			speed3Text: '4',
-			speed3Text: '5',
-			speed3Text: '6',
+			speed4Text: '4',
+			speed5Text: '5',
+			speed6Text: '6',
 		};
 	}
 
