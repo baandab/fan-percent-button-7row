@@ -94,34 +94,44 @@ If the speed percantage is changed via any other means (slider, service call, et
             customTheme: false
         ## USE THIS CONFIG TO USE A DEFAULT CUSTOM THEME
           - entity: fan.hall_fan
-            type: custom:fan-percent-button-row
+            type: custom:fan-percent-button-7row
             name: Fan Default Custom Theme
             customTheme: true
             customSetpoints: true
-            lowPercentage: 30
-            medPercentage: 60
-            hiPercentage: 90
+            button1Percentage: 10
+            button2Percentage: 20
+            button3Percentage: 30
+            button4Percentage: 40
+            button5Percentage: 50
+            button6Percentage: 60
         ## USE THIS CONFIG TO USE A 'CUSTOMZED' CUSTOM THEME
           - entity: fan.hall_fan
             type: custom:fan-percent-button-7row
             name: Fan Custom Custom Theme
             reverseButtons: true
             customTheme: true
-            isOnLowColor: 'rgb(255, 0, 0)'
-            isOnMedColor: '#888888'
-            isOnHiColor: '#222222'
+            speed1Color: 'rgb(255, 0, 0)'
+            speed2Color: '#888888'
+            speed3Color: '#222222'
+            speed4Color: '#222222'
+            speed5Color: '#222222'
+            speed6Color: '#222222'
             buttonInactiveColor: '#aaaaaa'
             isOffColor: 'purple'
         ## USE THIS CONFIG TO SET CUSTOM BUTTON TEXT (NOT REQUIRED TO SET "customTheme: true" TO USE THESE )
           - entity: fan.hall_fan
             type: custom:fan-percent-button-7row
             name: Fan Custom Button Text
-            customHiText: me
-            customLowText: do
-            customMedText: re
+            speed1Text: A
+            speed2Text: B
+            speed3Text: C
+            speed4Text: D
+            speed5Text: E
+            speed6Text: F
             customOffText: not
             width: '15px'
             height: '15px'
+            
             
   ```
 
