@@ -206,8 +206,8 @@ class CustomFanPercent7Row extends LitElement {
 		const hide_OffButton = config.hideOffButton;
 		const hide_Button1 = config.hideButton1;
 		const hide_Button2 = config.hideButton2;
-		const hide_Button3 = config.hideButton2;
-		const hide_Button4 = config.hideButton3;
+		const hide_Button3 = config.hideButton3;
+		const hide_Button4 = config.hideButton4;
 		const hide_Button5 = config.hideButton5;
 		const hide_Button6 = config.hideButton6;
 		const sendStateWithSpeed = config.sendStateWithSpeed;
