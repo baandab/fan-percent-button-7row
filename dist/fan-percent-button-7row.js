@@ -2,7 +2,7 @@ window.customCards = window.customCards || [];
 window.customCards.push({
   type: "fan-percent-button-7row",
   name: "fan percent button 7row",
-  description: "A plugin to display your fan controls with 7 buttons.",
+  description: "A plugin to display your fan controls in a button row.",
   preview: false,
 });
 
@@ -23,20 +23,20 @@ class CustomFanPercent7Row extends LitElement {
 			sendStateWithSpeed: false,
 			allowDisablingButtons: true,
 			offPercentage: 0,
-			lowPercentage: 33,
-			medPercentage: 66,
-			hiPercentage: 100,
+			button1Percentage: 33,
+			button2Percentage: 66,
+			button3Percentage: 100,
 			width: '30px',
 			height: '30px',
 			isOffColor: '#f44c09',
-			isOnLowColor: '#43A047',
-			isOnMedColor: '#43A047',
-			isOnHiColor: '#43A047',
+			speed1Color: '#43A047',
+			speed2Color: '#43A047',
+			speed3Color: '#43A047',
 			buttonInactiveColor: '#759aaa',
 			customOffText: 'OFF',
-			customLowText: 'LOW',
-			customMedText: 'MED',
-			customHiText: 'HIGH',
+			speed1Text: '1',
+			speed2Text: '2',
+			speed3Text: '3',
 		};
 	}
 
@@ -46,31 +46,31 @@ class CustomFanPercent7Row extends LitElement {
 			_config: Object,
 			_stateObj: Object,
 			_offSP: Number,
-			_lowSP: Number,
-			_medSP: Number,
-			_highSP: Number,
+			_button1SP: Number,
+			_button2SP: Number,
+			_button3SP: Number,
 			_width: String,
 			_height: String,
-			_leftColor: String,
-			_midLeftColor: String,
-			_midRightColor: String,
-			_rightColor: String,
-			_leftText: String,
-			_midLeftText: String,
-			_midRightText: String,
-			_rightText: String,
-			_leftName: String,
-			_midLeftName: String,
-			_midRightName: String,
-			_rightName: String,
-			_hideLeft: String,
-			_hideMidLeft: String,
-			_hideMidRight: String,
-			_hideRight: String,
-			_leftState: Boolean,
-			_midLeftState: Boolean,
-			_midRightState: Boolean,
-			_rightState: Boolean,
+			_button1Color: String,
+			_button2Color: String,
+			_button3Color: String,
+			_button4Color: String,
+			_button1Text: String,
+			_button2Text: String,
+			_button3Text: String,
+			_button4Text: String,
+			_button1Name: String,
+			_button2Name: String,
+			_button3Name: String,
+			_button4Name: String,
+			_button1: String,
+			_button2: String,
+			_button3: String,
+			_button4: String,
+			_button1State: Boolean,
+			_button2State: Boolean,
+			_button3State: Boolean,
+			_button4State: Boolean,
 		};
 	}
 
@@ -105,28 +105,28 @@ class CustomFanPercent7Row extends LitElement {
 				<div id='button-container' class='box'>
 					<button
 						class='percentage'
-						style='${this._leftColor};min-width:${this._width};max-width:${this._width};height:${this._height};${this._hideLeft}'
-						toggles name="${this._leftName}"
+						style='${this._button1Color};min-width:${this._width};max-width:${this._width};height:${this._height};${this._button1}'
+						toggles name="${this._button1Name}"
 						@click=${this.setPercentage}
-						.disabled=${this._leftState}>${this._leftText}</button>
+						.disabled=${this._button1State}>${this._button1Text}</button>
 					<button
 						class='percentage'
-						style='${this._midLeftColor};min-width:${this._width};max-width:${this._width};height:${this._height};${this._hideMidLeft}'
-						toggles name="${this._midLeftName}"
+						style='${this._button2Color};min-width:${this._width};max-width:${this._width};height:${this._height};${this._button2}'
+						toggles name="${this._button2Name}"
 						@click=${this.setPercentage}
-						.disabled=${this._midLeftState}>${this._midLeftText}</button>
+						.disabled=${this._button2State}>${this._button2Text}</button>
 					<button
 						class='percentage'
-						style='${this._midRightColor};min-width:${this._width};max-width:${this._width};height:${this._height};${this._hideMidRight}'
-						toggles name="${this._midRightName}"
+						style='${this._button3Color};min-width:${this._width};max-width:${this._width};height:${this._height};${this._button3}'
+						toggles name="${this._button3Name}"
 						@click=${this.setPercentage}
-						.disabled=${this._midRightState}>${this._midRightText}</button>
+						.disabled=${this._button3State}>${this._button3Text}</button>
 					<button
 						class='percentage'
-						style='${this._rightColor};min-width:${this._width};max-width:${this._width};height:${this._height};${this._hideRight}'
-						toggles name="${this._rightName}"
+						style='${this._button4Color};min-width:${this._width};max-width:${this._width};height:${this._height};${this._button4}'
+						toggles name="${this._button4Name}"
 						@click=${this.setPercentage}
-						.disabled=${this._rightState}>${this._rightText}</button>
+						.disabled=${this._button4State}>${this._button4Text}</button>
 				</div>
 			</hui-generic-entity-row>
 		`;
@@ -159,91 +159,91 @@ class CustomFanPercent7Row extends LitElement {
 		const allowDisable = config.allowDisablingButtons;
 		const buttonWidth = config.width;
 		const buttonHeight = config.height;
-		const OnLowClr = config.isOnLowColor;
-		const OnMedClr = config.isOnMedColor;
-		const OnHiClr = config.isOnHiColor;
+		const On1Clr = config.speed1Color;
+		const On2Clr = config.speed2Color;
+		const On3Clr = config.speed3Color;
 		const OffClr = config.isOffColor;
 		const buttonOffClr = config.buttonInactiveColor;
 		const OffSetpoint = config.offPercentage;
-		const LowSetpoint = config.lowPercentage;
-		const MedSetpoint = config.medPercentage;
-		const HiSetpoint = config.hiPercentage;
+		const Button1Setpoint = config.button1Percentage;
+		const Button2Setpoint = config.button2Percentage;
+		const Button3Setpoint = config.button3Percentage;
 		const custOffTxt = config.customOffText;
-		const custLowTxt = config.customLowText;
-		const custMedTxt = config.customMedText;
-		const custHiTxt = config.customHiText;
+		const cus1Text = config.speed1Text;
+		const cus2Text = config.speed2Text;
+		const cus3Text = config.speed3Text;
 
 		let offSetpoint;
-		let lowSetpoint;
-		let medSetpoint;
-		let hiSetpoint;
-		let low;
-		let med;
-		let high;
+		let Button1Setpoint;
+		let Button2Setpoint;
+		let Button3Setpoint;
+		let button1;
+		let button2;
+		let button3;
 		let offstate;
 
 		if (custSetpoint) {
 			offSetpoint = parseInt(OffSetpoint);
-			medSetpoint = parseInt(MedSetpoint);
-			if (parseInt(LowSetpoint) < 1) {
-				lowSetpoint = 1;
+			Button2Setpoint = parseInt(Button2Setpoint);
+			if (parseInt(Button1Setpoint) < 1) {
+				Button1Setpoint = 1;
 			} else {
-				lowSetpoint =  parseInt(LowSetpoint);
+				Button1Setpoint =  parseInt(Button1Setpoint);
 			}
-			if (parseInt(HiSetpoint) > 100) {
-				hiSetpoint = 100;
+			if (parseInt(Button3Setpoint) > 100) {
+				Button3Setpoint = 100;
 			} else {
-				hiSetpoint = parseInt(HiSetpoint);
+				Button3Setpoint = parseInt(Button3Setpoint);
 			}
 			if (stateObj && stateObj.attributes) {
-				if (stateObj.state == 'on' && stateObj.attributes.percentage > offSetpoint && stateObj.attributes.percentage <= ((medSetpoint + lowSetpoint)/2) ) {
-					low = 'on';
-				} else if (stateObj.state == 'on' && stateObj.attributes.percentage > ((medSetpoint + lowSetpoint)/2) && stateObj.attributes.percentage <= ((hiSetpoint + medSetpoint)/2) ) {
-					med = 'on';
-				} else if (stateObj.state == 'on' && stateObj.attributes.percentage > ((hiSetpoint + medSetpoint)/2) && stateObj.attributes.percentage <= 100) {
-					high = 'on';
+				if (stateObj.state == 'on' && stateObj.attributes.percentage > offSetpoint && stateObj.attributes.percentage <= ((Button2Setpoint + Button1Setpoint)/2) ) {
+					button1 = 'on';
+				} else if (stateObj.state == 'on' && stateObj.attributes.percentage > ((Button2Setpoint + Button1Setpoint)/2) && stateObj.attributes.percentage <= ((Button3Setpoint + Button2Setpoint)/2) ) {
+					button2 = 'on';
+				} else if (stateObj.state == 'on' && stateObj.attributes.percentage > ((Button3Setpoint + Button2Setpoint)/2) && stateObj.attributes.percentage <= 100) {
+					button3 = 'on';
 				} else {
 					offstate = 'on';
 				}
 			}
 		} else {
 			offSetpoint = 0 //parseInt(OffSetpoint);
-			lowSetpoint = 33 //parseInt(LowSetpoint);
-			medSetpoint = 66 //parseInt(MedSetpoint);
-			hiSetpoint = 100 //parseInt(HiSetpoint);
+			Button1Setpoint = 33 //parseInt(Button1Setpoint);
+			Button2Setpoint = 66 //parseInt(Button2Setpoint);
+			Button3Setpoint = 100 //parseInt(Button3Setpoint);
 			if (stateObj && stateObj.attributes) {
 				if (stateObj.state == 'on' && stateObj.attributes.percentage >= 17 && stateObj.attributes.percentage <= 50) {
-					low = 'on';
+					button1 = 'on';
 				} else if (stateObj.state == 'on' && stateObj.attributes.percentage >= 51 && stateObj.attributes.percentage <= 75) {
-					med = 'on';
+					button2 = 'on';
 				} else if (stateObj.state == 'on' && stateObj.attributes.percentage >= 76 && stateObj.attributes.percentage <= 100) {
-					high = 'on';
+					button3 = 'on';
 				} else {
 					offstate = 'on';
 				}
 			}
 		}
 
-		let lowcolor;
-		let medcolor;
-		let hicolor;
+		let button1color;
+		let button2color;
+		let button3color;
 		let offcolor;
 
 		if (custTheme) {
-			if (low == 'on') {
-				lowcolor = 'background-color:' + OnLowClr;
+			if (button1 == 'on') {
+				button1color = 'background-color:' + On1Clr;
 			} else {
-				lowcolor = 'background-color:' + buttonOffClr;
+				button1color = 'background-color:' + buttonOffClr;
 			}
-			if (med == 'on') {
-				medcolor = 'background-color:'  + OnMedClr;
+			if (button2 == 'on') {
+				button2color = 'background-color:'  + On2Clr;
 			} else {
-				medcolor = 'background-color:' + buttonOffClr;
+				button2color = 'background-color:' + buttonOffClr;
 			}
-			if (high == 'on') {
-				hicolor = 'background-color:'  + OnHiClr;
+			if (button3 == 'on') {
+				button3color = 'background-color:'  + On3Clr;
 			} else {
-				hicolor = 'background-color:' + buttonOffClr;
+				button3color = 'background-color:' + buttonOffClr;
 			}
 			if (offstate == 'on') {
 				offcolor = 'background-color:'  + OffClr;
@@ -251,20 +251,20 @@ class CustomFanPercent7Row extends LitElement {
 				offcolor = 'background-color:' + buttonOffClr;
 			}
 		} else {
-			if (low == 'on') {
-				lowcolor = 'background-color: var(--switch-checked-color)';
+			if (button1 == 'on') {
+				button1color = 'background-color: var(--switch-checked-color)';
 			} else {
-				lowcolor = 'background-color: var(--switch-unchecked-color)';
+				button1color = 'background-color: var(--switch-unchecked-color)';
 			}
-			if (med == 'on') {
-				medcolor = 'background-color: var(--switch-checked-color)';
+			if (button2 == 'on') {
+				button2color = 'background-color: var(--switch-checked-color)';
 			} else {
-				medcolor = 'background-color: var(--switch-unchecked-color)';
+				button2color = 'background-color: var(--switch-unchecked-color)';
 			}
-			if (high == 'on') {
-				hicolor = 'background-color: var(--switch-checked-color)';
+			if (button3 == 'on') {
+				button3color = 'background-color: var(--switch-checked-color)';
 			} else {
-				hicolor = 'background-color: var(--switch-unchecked-color)';
+				button3color = 'background-color: var(--switch-unchecked-color)';
 			}
 			if (offstate == 'on') {
 				offcolor = 'background-color: var(--switch-checked-color)';
@@ -274,26 +274,26 @@ class CustomFanPercent7Row extends LitElement {
 		}
 
 		let offtext = custOffTxt;
-		let lowtext = custLowTxt;
-		let medtext = custMedTxt;
-		let hitext = custHiTxt;
+		let button1text = cus1Text;
+		let button2text = cus2Text;
+		let button3text = cus3Text;
 
 		let buttonwidth = buttonWidth;
 		let buttonheight = buttonHeight;
 
 		let offname = 'off'
-		let lowname = 'low'
-		let medname = 'medium'
-		let hiname = 'high'
+		let button1name = '1'
+		let button2name = '2'
+		let button3name = '3'
 
 		let hideoff = 'display:block';
-		let hidemedium = 'display:block';
+		let hidebutton = 'display:block';
 		let nohide = 'display:block';
 
 		if (twoSpdFan) {
-			hidemedium = 'display:none';
+			hidebutton = 'display:none';
 		} else {
-			hidemedium = 'display:block';
+			hidebutton = 'display:block';
 		}
 
 		if (hide_Off) {
@@ -306,52 +306,52 @@ class CustomFanPercent7Row extends LitElement {
 		this._width = buttonwidth;
 		this._height = buttonheight;
 		this._offSP = offSetpoint;
-		this._lowSP = lowSetpoint;
-		this._medSP = medSetpoint;
-		this._highSP = hiSetpoint;
+		this._button1SP = Button1Setpoint;
+		this._button2SP = Button2Setpoint;
+		this._button3SP = Button3Setpoint;
 
 		if (revButtons) {
-			this._leftState = (offstate == 'on' && allowDisable);
-			this._midLeftState = (low === 'on' && allowDisable);
-			this._midRightState = (med === 'on'&& allowDisable);
-			this._rightState = (high === 'on' && allowDisable);
-			this._leftColor = offcolor;
-			this._midLeftColor = lowcolor;
-			this._midRightColor = medcolor;
-			this._rightColor = hicolor;
-			this._leftText = offtext;
-			this._midLeftText = lowtext;
-			this._midRightText = medtext;
-			this._rightText = hitext;
-			this._leftName = offname;
-			this._midLeftName = lowname;
-			this._midRightName = medname;
-			this._rightName = hiname;
-			this._hideLeft = hideoff;
-			this._hideMidLeft = nohide;
-			this._hideMidRight = hidemedium;
-			this._hideRight = nohide;
+			this._button1State = (offstate == 'on' && allowDisable);
+			this._button2State = (button1 === 'on' && allowDisable);
+			this._button3State = (button2 === 'on'&& allowDisable);
+			this._button4State = (button3 === 'on' && allowDisable);
+			this._button1Color = offcolor;
+			this._button2Color = button1color;
+			this._button3Color = button2color;
+			this._button4Color = button3color;
+			this._button1Text = offtext;
+			this._button2Text = button1text;
+			this._button3Text = button2text;
+			this._button4Text = button3text;
+			this._button1Name = offname;
+			this._button2Name = button1name;
+			this._button3Name = button2name;
+			this._button4Name = button3name;
+			this._button1 = hideoff;
+			this._button2 = nohide;
+			this._button3 = hidebutton;
+			this._button4 = nohide;
 		} else {
-			this._leftState = (high === 'on' && allowDisable);
-			this._midLeftState = (med === 'on'&& allowDisable);
-			this._midRightState = (low === 'on' && allowDisable);
-			this._rightState = (offstate == 'on' && allowDisable);
-			this._leftColor = hicolor;
-			this._midLeftColor = medcolor;
-			this._midRightColor = lowcolor;
-			this._rightColor = offcolor;
-			this._leftText = hitext;
-			this._midLeftText = medtext;
-			this._midRightText = lowtext;
-			this._rightText = offtext;
-			this._leftName = hiname;
-			this._midLeftName = medname;
-			this._midRightName = lowname;
-			this._rightName = offname;
-			this._hideRight = hideoff;
-			this._hideMidRight = nohide;
-			this._hideMidLeft = hidemedium;
-			this._hideLeft = nohide;
+			this._button1State = (button3 === 'on' && allowDisable);
+			this._button2State = (button2 === 'on'&& allowDisable);
+			this._button3State = (button1 === 'on' && allowDisable);
+			this._button4State = (offstate == 'on' && allowDisable);
+			this._button1Color = button3color;
+			this._button2Color = button2color;
+			this._button3Color = button1color;
+			this._button4Color = offcolor;
+			this._button1Text = button3text;
+			this._button2Text = button2text;
+			this._button3Text = button1text;
+			this._button4Text = offtext;
+			this._button1Name = button3name;
+			this._button2Name = button2name;
+			this._button3Name = button1name;
+			this._button4Name = offname;
+			this._button4 = hideoff;
+			this._button3 = nohide;
+			this._button2 = hidebutton;
+			this._button1 = nohide;
 		}
 	}
 
@@ -361,25 +361,25 @@ class CustomFanPercent7Row extends LitElement {
 
 		if( level == 'off' ) {
 			this.hass.callService('fan', 'turn_off', param);
-		} else if (level == 'low') {
+		} else if (level == '1') {
 			if(this._config.sendStateWithSpeed) {
-				this.hass.callService('fan', 'turn_on', {entity_id: this._config.entity, percentage: this._lowSP});
+				this.hass.callService('fan', 'turn_on', {entity_id: this._config.entity, percentage: this._button1SP});
 			} else {
-				param.percentage = this._lowSP;
+				param.percentage = this._button1SP;
 				this.hass.callService('fan', 'set_percentage', param);
 			}
-		} else if (level == 'medium') {
+		} else if (level == '2') {
 			if(this._config.sendStateWithSpeed) {
-				this.hass.callService('fan', 'turn_on', {entity_id: this._config.entity, percentage: this._medSP});
+				this.hass.callService('fan', 'turn_on', {entity_id: this._config.entity, percentage: this._button2SP});
 			} else {
-				param.percentage = this._medSP;
+				param.percentage = this._button2SP;
 				this.hass.callService('fan', 'set_percentage', param);
 			}
-		} else if (level == 'high') {
+		} else if (level == '3') {
 			if(this._config.sendStateWithSpeed) {
-			this.hass.callService('fan', 'turn_on', {entity_id: this._config.entity, percentage: this._highSP});
+			this.hass.callService('fan', 'turn_on', {entity_id: this._config.entity, percentage: this._button3SP});
 			} else {
-				param.percentage = this._highSP;
+				param.percentage = this._button3SP;
 				this.hass.callService('fan', 'set_percentage', param);
 			}
 		}
