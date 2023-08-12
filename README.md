@@ -1,4 +1,7 @@
 # Fan Percent Button 7 Row
+
+forked from finity69x2/fan-percent-button-row 
+ 
 Provides a means to program six preset speed percentage settings for fans selectable from a Lovelace button row.
 
 ## NOTE: You must be on Home Assistant V2021.3.X or higher to use this plug-in. However, if your fan integration hasn't been updated to the new control method (if it doesn't actually use percentages for speeds but still uses a speed list) then you need to use the fan-control-entity-row.
@@ -49,12 +52,12 @@ Then to use this in a card place the following in your entity card:
 | width | String | No | 30px | A custom width for the buttons |
 | height | String | No | 30px | A custom height for the buttons |
 | isOffColor | String | No | '#f44c09' | Sets the color of the 'Off' button if fan is off |
-| speed1Color | String | No | '#43A047' | Sets the color of button 1 if fan is on percent speed #1 |
-| speed2Color | String | No | '#43A047' | Sets the color of button 2 if fan is on percent speed #2 |
-| speed3Color | String | No | '#43A047' | Sets the color of button 3 if fan is on percent speed #3 |
-| speed4Color | String | No | '#43A047' | Sets the color of button 4 if fan is on percent speed #4 |
-| speed5Color | String | No | '#43A047' | Sets the color of button 5 if fan is on percent speed #5 |
-| speed6Color | String | No | '#43A047' | Sets the color of button 6 if fan is on percent speed #6 |
+| speed1Color | String | No | '#43A047' | Sets the color of button 1 if fan is on percent speed 1 |
+| speed2Color | String | No | '#43A047' | Sets the color of button 2 if fan is on percent speed 2 |
+| speed3Color | String | No | '#43A047' | Sets the color of button 3 if fan is on percent speed 3 |
+| speed4Color | String | No | '#43A047' | Sets the color of button 4 if fan is on percent speed 4 |
+| speed5Color | String | No | '#43A047' | Sets the color of button 5 if fan is on percent speed 5 |
+| speed6Color | String | No | '#43A047' | Sets the color of button 6 if fan is on percent speed 6 |
 | buttonInactiveColor | String | No | '#759aaa' | Sets the color of the the buttons if that selection is not "active" |
 | button1Percentage | Integer | No | 16 | Sets the speed percentage level for Button 1 (min 1) |
 | button2Percentage | Integer | No | 33 | Sets the speed percentage level for Buton 2  |
@@ -135,11 +138,8 @@ This is with the default Lovelace frontend theme set:
 
 ![Default](images/fan_percent_default.jpg)
 
-This is with the "Slate" frontend theme set:
+This is with the customTheme set to true:
 
-![Slate](images/fan_percent_default_2.jpg)
+![Default](images/fan_percent_default_2.jpg)
 
-This is how this plugin looks with the plugin fully themed:
-
-![Slate-Themed](images/fan_percent_themed.jpg)
 
