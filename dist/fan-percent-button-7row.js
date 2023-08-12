@@ -212,13 +212,6 @@ class CustomFanPercent7Row extends LitElement {
 		const On6Clr = config.speed6Color;
 		const OffClr = config.isOffColor;
 		const buttonOffClr = config.buttonInactiveColor;
-		const OffSetpoint = config.offPercentage;
-		const Button1Setpoint = config.button1Percentage;
-		const Button2Setpoint = config.button2Percentage;
-		const Button3Setpoint = config.button3Percentage;
-		const Button4Setpoint = config.button4Percentage;
-		const Button5Setpoint = config.button5Percentage;
-		const Button6Setpoint = config.button6Percentage;
 		const custOffTxt = config.customOffText;
 		const cus1Text = config.speed1Text;
 		const cus2Text = config.speed2Text;
@@ -226,6 +219,14 @@ class CustomFanPercent7Row extends LitElement {
 		const cus4Text = config.speed4Text;
 		const cus5Text = config.speed5Text;
 		const cus6Text = config.speed6Text;
+
+//		const OffSetpoint = config.offPercentage;
+//		const Button1Setpoint = config.button1Percentage;
+//		const Button2Setpoint = config.button2Percentage;
+//		const Button3Setpoint = config.button3Percentage;
+//		const Button4Setpoint = config.button4Percentage;
+//		const Button5Setpoint = config.button5Percentage;
+//		const Button6Setpoint = config.button6Percentage;
 
 		let offSetpoint;
 		let Button1Setpoint;
@@ -243,29 +244,29 @@ class CustomFanPercent7Row extends LitElement {
 		let offstate;
 
 		if (custSetpoint) {
-			offSetpoint = parseInt(OffSetpoint);
-			if (parseInt(Button1Setpoint) < 1) {
+			offSetpoint = parseInt(config.offPercentage);
+			if (parseInt(config.button1Percentage) < 1) {
 				Button1Setpoint = 1;
 			} else {
-				Button1Setpoint =  parseInt(Button1Setpoint);
+				Button1Setpoint =  parseInt(config.button1Percentage);
 			}
-			Button2Setpoint = parseInt(Button2Setpoint);
-			Button3Setpoint = parseInt(Button3Setpoint);
-			Button4Setpoint = parseInt(Button4Setpoint);
-			Button5Setpoint = parseInt(Button5Setpoint);
-			if (parseInt(Button6Setpoint) > 100) {
+			Button2Setpoint = parseInt(config.button2Percentage);
+			Button3Setpoint = parseInt(config.button3Percentage);
+			Button4Setpoint = parseInt(config.button4Percentage);
+			Button5Setpoint = parseInt(config.button5Percentage);
+			if (parseInt(config.button6Percentage) > 100) {
 				Button6Setpoint = 100;
 			} else {
-				Button6Setpoint = parseInt(Button6Setpoint);
+				Button6Setpoint = parseInt(config.button6Percentage);
 			}
 		} else {
-			offSetpoint = 0 //parseInt(OffSetpoint);
-			Button1Setpoint = 16 //parseInt(Button1Setpoint);
-			Button2Setpoint = 33 //parseInt(Button2Setpoint);
-			Button3Setpoint = 50 //parseInt(Button3Setpoint);
-			Button4Setpoint = 66 //parseInt(Button4Setpoint);
-			Button5Setpoint = 83 //parseInt(Button5Setpoint);
-			Button6Setpoint = 100 //parseInt(Button6Setpoint);
+			offSetpoint = 0;       //parseInt(OffSetpoint);
+			Button1Setpoint = 16;  //parseInt(Button1Setpoint);
+			Button2Setpoint = 33;  //parseInt(Button2Setpoint);
+			Button3Setpoint = 50;  //parseInt(Button3Setpoint);
+			Button4Setpoint = 66;  //parseInt(Button4Setpoint);
+			Button5Setpoint = 83;  //parseInt(Button5Setpoint);
+			Button6Setpoint = 100; //parseInt(Button6Setpoint);
 		}
 		if (stateObj && stateObj.attributes) {
 			if (stateObj.state == 'on' && stateObj.attributes.percentage > offSetpoint && stateObj.attributes.percentage <= Button1Setpoint) {
@@ -379,13 +380,13 @@ class CustomFanPercent7Row extends LitElement {
 		let buttonwidth = buttonWidth;
 		let buttonheight = buttonHeight;
 
-		let offname = 'off'
-		let button1name = '1'
-		let button2name = '2'
-		let button3name = '3'
-		let button4name = '4'
-		let button5name = '5'
-		let button6name = '6'
+		let offname = 'off';
+		let button1name = '1';
+		let button2name = '2';
+		let button3name = '3';
+		let button4name = '4';
+		let button5name = '5';
+		let button6name = '6';
 
 		let hideoff = 'display:block';
 		let hidebutton = 'display:block';
